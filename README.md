@@ -8,7 +8,6 @@ Puedes interactuar con el bot directamente aquí: @Dr_ahorro_bot
 ---
 
 ### 📺 Demostración de Funcionamiento
-*(Aquí arrastras tu video o pegas tu GIF usando cualquiera de las opciones anteriores)*
 
 ![Demo del Bot](assets/demo_bot.gif)
 
