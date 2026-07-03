@@ -1,26 +1,10 @@
-# Entornos virtuales y dependencias
-venv/
-.venv/
-env/
-
-# Archivos de variables de entorno
+# Archivos de entorno - ¡NUNCA subir esto a GitHub!
 .env
 
-# Archivos compilados de Python
+# Directorios de caché de Python
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
 
-# Paquetes de distribución
-build/
-dist/
-*.egg-info/
-
-# Archivos de IDEs y editores
+# Archivos de configuración de IDEs (opcional, pero buena práctica)
 .vscode/
 .idea/
-
-# Logs y bases de datos locales
-*.log
-*.sqlite3

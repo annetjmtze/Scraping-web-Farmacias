@@ -126,7 +126,10 @@ async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 def main():
     """Inicia el bot y lo configura con Webhooks."""
     TOKEN = os.getenv("TELEGRAM_TOKEN")
-    WEBHOOK_URL = os.getenv("WEBHOOK_URL")
+    # La URL base del webhook la provee Railway. Le añadimos el path "/webhook".
+    WEBHOOK_URL = f"{os.getenv('WEBHOOK_URL')}/webhook"
+    # Railway nos da un puerto dinámico a través de la variable de entorno PORT.
+    PORT = int(os.getenv("PORT", 8000)) # Usamos 8000 como default si no existe.
 
     if not TOKEN or not WEBHOOK_URL:
         logging.error("Error: No se encontraron las variables de entorno TELEGRAM_TOKEN o WEBHOOK_URL.")
@@ -143,11 +146,11 @@ def main():
     # Manejador de Eco (Captura todo lo que no sea un comando)
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo))
 
-    # Ejecución por Webhook en el puerto 8000
-    logging.info(f"Iniciando Webhook en la URL: {WEBHOOK_URL}/webhook")
+    # Ejecución por Webhook
+    logging.info(f"Iniciando Webhook en el puerto {PORT} para la URL: {WEBHOOK_URL}")
     application.run_webhook(
         listen="0.0.0.0",
-        port=8000,
+        port=PORT,
         url_path="webhook",
         webhook_url=WEBHOOK_URL
     )
